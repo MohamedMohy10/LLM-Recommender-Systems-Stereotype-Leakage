@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+venv/
+*.pyc
+.env
+*.png
+*.pdf
+trace.json
+*.csv
