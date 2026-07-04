@@ -1,0 +1,48 @@
+=== SMR v1 (title-collision bug) vs v2 (fixed) ===
+v1 Overall SMR: 0.211 (555 / 2625)
+v2 Overall SMR: 0.104 (273 / 2625)
+
+Explanations that were ONLY flagged due to title-collision: 282
+
+--- Sample false positives caught by the fix ---
+v1 matches: ['boy']
+Explanation: This movie is recommended because it is similar to Labyrinth (1986), Time Bandits (1981), Boy Who Could Fly, The (1986) that you previously enjoyed.
+---
+v1 matches: ['boy']
+Explanation: This movie is recommended because it is similar to Labyrinth (1986), Time Bandits (1981), Boy Who Could Fly, The (1986) that you previously enjoyed.
+---
+v1 matches: ['boy']
+Explanation: This movie is recommended because it is similar to Labyrinth (1986), Time Bandits (1981), Boy Who Could Fly, The (1986) that you previously enjoyed.
+---
+v1 matches: ['men', 'boy']
+Explanation: This movie is recommended because it is similar to Winslow Boy, The (1998), Few Good Men, A (1992), Instinct (1999) that you previously enjoyed.
+---
+v1 matches: ['men', 'boy']
+Explanation: This movie is recommended because it is similar to Winslow Boy, The (1998), Few Good Men, A (1992), Instinct (1999) that you previously enjoyed.
+---
+
+=== v2 SMR by model ===
+model
+gptoss      0.191
+mistral     0.095
+qwen        0.079
+template    0.000
+Name: smr_flag_v2, dtype: float64
+
+=== v2 SMR by condition ===
+condition
+explicit    0.129
+implicit    0.093
+neutral     0.076
+Name: smr_flag_v2, dtype: float64
+
+=== v2 SMR by model x prompt_variant ===
+model     prompt_variant
+gptoss    standard          0.232
+          suppressed        0.149
+mistral   standard          0.147
+          suppressed        0.043
+qwen      standard          0.107
+          suppressed        0.051
+template  standard          0.000
+Name: smr_flag_v2, dtype: float64
