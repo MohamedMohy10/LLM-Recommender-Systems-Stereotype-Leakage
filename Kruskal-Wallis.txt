@@ -1,0 +1,20 @@
+Sample sizes: [80, 76, 78]
+Means: [np.float64(0.075), np.float64(0.171), np.float64(0.321)]
+
+Kruskal-Wallis H = 7.011, p = 0.0300
+>>> Significant difference across LLM families.
+Running pairwise Mann-Whitney U (Bonferroni-corrected alpha = 0.0167)...
+qwen vs mistral: U=2870.0, p=0.1932 (not significant)
+qwen vs gptoss: U=2708.0, p=0.0094 (SIGNIFICANT)
+mistral vs gptoss: U=2735.0, p=0.1741 (not significant)
+
+--- Rank-biserial effect sizes (magnitude of difference) ---
+qwen vs mistral: r = 0.056
+qwen vs gptoss: r = 0.132
+mistral vs gptoss: r = 0.077
+
+
+========================================================================
+comment :
+
+A Kruskal-Wallis test on LLM-judge severity scores in the explicit/standard condition (n=234 across 3 models) revealed a significant difference across model families (H=7.011, p=0.030). Pairwise Mann-Whitney U tests with Bonferroni correction (α=0.0167) showed GPT-OSS scored significantly higher than Qwen (U=2708, p=0.0094, r=0.132), while Qwen-Mistral and Mistral-GPT-OSS comparisons did not reach significance after correction. Mean severity followed the ordering Qwen (0.075) < Mistral (0.171) < GPT-OSS (0.321), consistent with Prediction 1's expectation that at least one pairwise LLM comparison would show significant variation, though effect sizes were small across all comparisons.

@@ -1,0 +1,58 @@
+============================================================
+PART A: SMR (full corpus) - Standard vs Suppressed
+============================================================
+
+qwen: standard=0.107, suppressed=0.051
+  Chi-square: chi2=7.359, p=0.00667 (SIGNIFICANT reduction)
+
+mistral: standard=0.147, suppressed=0.043
+  Chi-square: chi2=22.465, p=0.00000 (SIGNIFICANT reduction)
+
+gptoss: standard=0.232, suppressed=0.149
+  Chi-square: chi2=7.776, p=0.00529 (SIGNIFICANT reduction)
+
+============================================================
+PART A2: SMR (full corpus) - Explicit vs Implicit vs Neutral
+============================================================
+
+qwen: {'explicit': np.float64(0.097), 'implicit': np.float64(0.057), 'neutral': np.float64(0.087)}
+  Chi-square: chi2=3.477, p=0.17579 (not significant)
+
+mistral: {'explicit': np.float64(0.143), 'implicit': np.float64(0.05), 'neutral': np.float64(0.087)}
+  Chi-square: chi2=15.386, p=0.00046 (SIGNIFICANT)
+
+gptoss: {'explicit': np.float64(0.21), 'implicit': np.float64(0.22), 'neutral': np.float64(0.093)}
+  Chi-square: chi2=11.608, p=0.00301 (SIGNIFICANT)
+
+============================================================
+PART B: Judge scores - Standard vs Suppressed (explicit condition)
+============================================================
+
+qwen: standard mean=0.075 (n=80), suppressed mean=0.000 (n=15)
+  Mann-Whitney U (one-sided, standard>suppressed): U=630.0, p=0.1934 (not significant)
+
+mistral: standard mean=0.171 (n=76), suppressed mean=0.000 (n=15)
+  Mann-Whitney U (one-sided, standard>suppressed): U=630.0, p=0.0974 (not significant)
+
+gptoss: standard mean=0.321 (n=78), suppressed mean=0.000 (n=15)
+  Mann-Whitney U (one-sided, standard>suppressed): U=690.0, p=0.0393 (SIGNIFICANT)
+
+============================================================
+PART B2: Judge scores - Explicit vs Implicit vs Neutral (standard prompt only)
+============================================================
+
+qwen: sizes=[80, 15, 15], means (explicit/implicit/neutral)=[np.float64(0.075), np.float64(0.0), np.float64(0.0)]
+  Kruskal-Wallis: H=1.542, p=0.4626 (not significant)
+
+mistral: sizes=[76, 15, 15], means (explicit/implicit/neutral)=[np.float64(0.171), np.float64(0.0), np.float64(0.0)]
+  Kruskal-Wallis: H=3.379, p=0.1847 (not significant)
+
+gptoss: sizes=[78, 15, 15], means (explicit/implicit/neutral)=[np.float64(0.321), np.float64(0.0), np.float64(0.0)]
+  Kruskal-Wallis: H=6.109, p=0.0471 (SIGNIFICANT)
+
+
+===============================================================================================================================================
+
+comment : 
+
+The demographic-suppression prompt significantly reduced SMR-detected leakage across all three models (qwen: χ²=7.36, p=0.007; mistral: χ²=22.47, p<0.001; gptoss: χ²=7.78, p=0.005), confirming Prediction 2's core claim at full-corpus scale. This reduction was also detected by LLM-judge scoring for GPT-OSS (Mann-Whitney U=690, p=0.039), though not for Qwen or Mistral — likely reflecting the smaller judge-scored suppressed-condition sample (n=15) combined with a floor effect (suppressed-condition judge scores were uniformly 0 across all three models). Probing-condition effects (explicit/implicit/neutral) were model-dependent: GPT-OSS showed significant variation on both SMR (χ²=11.61, p=0.003) and judge score (H=6.11, p=0.047), while Mistral showed a significant SMR effect only (χ²=15.39, p<0.001), and Qwen showed no significant condition effect on either metric.
